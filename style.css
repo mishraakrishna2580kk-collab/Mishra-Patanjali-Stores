@@ -55,3 +55,21 @@ body {
     text-align: center;
     padding: 10px;
 }
+
+/* Store Section */
+.store {
+    padding: 30px;
+    text-align: 30px;
+    background-color: #ffffff;
+    margin: 20px;
+    border-radius:8px;
+}
+
+.store h3 {
+    color:#0f7c2a;
+    margin-bottom: 15px;
+}
+
+.store p {
+    margin-bottom: 8px;
+}
