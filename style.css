@@ -73,3 +73,41 @@ body {
 .store p {
     margin-bottom: 8px;
 }
+
+/*Product Section */
+.product {
+    padding: 30px;
+    background: #ffffff;
+    margin: 20px;
+    border-radius: 8px;
+}
+
+.product-list {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 20px;
+}
+
+.product {
+    border: 1x solid #ddd;
+    padding: 15px;
+    border-radius: 6px;
+    text-align: center;
+}
+
+.product h4 {
+    margin-bottom: 5px;
+}
+
+.product p {
+    margin-bottom: 10px;
+}
+
+.product button {
+    background: #0f72ca;
+    color: white;
+    border: none;
+    padding: 8pxv15px;
+    cursor: pointer;
+    border-radius: 4px;
+}
