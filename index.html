@@ -51,6 +51,27 @@
         <h3>Your Cart</h3>
         <ul id="cart"></ul>
         <p><strong>Total: ₹<span id="total">0</span></strong></p>
+        <div class="checkout">
+            <h3>Customer Details--</h3>
+
+            <input
+                type="text"
+                id="CustomerName"
+                placeholder="Phone Number"
+            />
+
+            <textarea
+                id="CustomerAddress"
+                placeholder="Delivery Address"
+                rows="3"
+            ></textarea>
+
+            <button onclick="placeOrder()" class="btn">
+                Place Order on WhatsApp
+            </button>
+
+
+        </div>
 
     </section>
     <!--Footer-->
