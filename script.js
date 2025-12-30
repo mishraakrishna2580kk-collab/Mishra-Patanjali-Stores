@@ -28,31 +28,32 @@ products.forEach(product => {
 });
 
 //New Cart logic with quantity
-window.addToCart= function (productId) {
-  const product = product.find(p => p.id === productid);
-  const cartItem = cart.find(item => item.id === productId);
 
-  if (cartItem) {
-    cartItem.quantity += 1;
-  } else {
-    cart.push({ ...product, quantity: 1 });
-  }
+ window.addToCart = function (productId) {
+    const product = products.find(p => p.id === productId);
+    const cartItem = cart.find(item => item.id === productId);
+
+    if (cartItem) {
+      cartItem.quantity += 1;
+    } else {
+      cart.push({ ...product, quantity: 1 });
+    }
 
   renderCart();
-};
+  };
 
-function renderCart(){
-  cartList.i="";
-  let total = 0;
+  function renderCart() {
+    cartList.innerHTML = "";
+    let total = 0;
 
-  cart.forEach(item => {
-    const li= document.createElement("li");
-    li.textContent=`${item.name} × ${item.quantity} = ₹${item.price * item.quantity}`;
-    cartList.appendChild(li);
-    total += item.price * item.quantity;
-  });
+    cart.forEach(item => {
+      const li = document.createElement("li");
+      li.textContent = `${item.name} × ${item.quantity} = ₹${item.price * item.quantity}`;
+      cartList.appendChild(li);
+      total += item.price * item.quantity;
+    });
 
-  totalEl.textContent = total;
-}
+    totalEl.textContent = total;
+  }
 
 });
