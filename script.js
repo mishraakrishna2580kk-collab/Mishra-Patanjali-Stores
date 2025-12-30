@@ -77,7 +77,7 @@ document.addEventListener("DOMContentLoaded", function () {
   message += `\n💰 Total: ₹${totalEl.textContent}`;
 
   const whatsappURL =
-    `https://wa.me/91736607619{encodeURIComponent(message)}`;
+    `https://wa.me/917366076190{encodeURIComponent(message)}`;
 
   window.open(whatsappURL, "_blank");
 };
