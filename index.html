@@ -33,7 +33,7 @@
         <p><strong>Phone:</strong> +91-00000000000
 
         <a
-            href="https://wa.me/0000000000"
+            href="https://wa.me/000000000"
             target="_blank"
             class="btn"
         >
@@ -43,6 +43,12 @@
     <!--Product Section-->
     <section class="products">
         <h3>Our Products</h3>
+        <input
+            type="text"
+            id="searchInput"
+            placeholder="Search products...."
+            class="search-box"
+        />
 
         <div class="product-list" id="productList">
             <!--Products will come from javascript-->
@@ -72,7 +78,7 @@
                 rows="3"
             ></textarea>
 
-            <button onclick="placeOrder()" class="btn">
+            <button onclick="placeOrder()" class="btn" id="placeOrderBtn">
                 Place Order on WhatsApp
             </button>
 

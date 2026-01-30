@@ -1,5 +1,5 @@
 document.addEventListener("DOMContentLoaded", function () {
-  alert("JS LOADED");
+  
 
   const products = [
     { 
@@ -42,8 +42,8 @@ document.addEventListener("DOMContentLoaded", function () {
   }
 
   //Save Cart to localstorage
-  function savecart() {
-    localStorage.storage.setItem("cart", JSON.stringify(cart));
+  function saveCart() {
+    localStorage.setItem("cart", JSON.stringify(cart));
   }
 
   // Render products
@@ -62,6 +62,35 @@ document.addEventListener("DOMContentLoaded", function () {
     });
     productList.appendChild(div);
   });
+
+
+  const searchInput=document.getElementById("searchInput");
+
+    searchInput.addEventListener("input",function(){
+      const keyword=searchInput.value.toLowerCase();
+
+      const filteredProducts=products.filter(p=>
+        p.name.toLowerCase().includes(keyword)
+      );
+
+      renderFilteredProducts(filteredProducts);
+    });
+
+  function renderFilteredProducts(lists) {
+    productList.innerHTML="";
+
+    lists.forEach(product => {
+      const div = document.createElement("div");
+      div.className = "product";
+      div.innerHTML=`
+        <img src="${product.image}" alt="${product.name}">
+        <h4>${product.name}</h4>
+        <p>₹${product.price}</p>
+        <button onclick="addToCart(${product.id})">Add to Cart</button>
+      `;
+      productList.appendChild(div);
+    });
+  }
 
   function addToCart(productId) {
     const product = products.find(p => p.id === productId);
@@ -88,6 +117,20 @@ document.addEventListener("DOMContentLoaded", function () {
     });
 
     totalEl.textContent = total;
+
+    const orderBtn= document.getElementById("placeOrderBtn");
+
+    if (cart.length=== 0) {
+      orderBtn.disabled= true;
+      orderBtn.style.opacity = "0.6";
+      orderBtn.style.cursor="not-allowed";
+    } else {
+      orderBtn.disabled=false;
+      orderBtn.style.opacity="1";
+      orderBtn.style.cursor="pointer";
+    }
+
+    saveCart();
   }
 
   window.placeOrder = function () {
@@ -108,13 +151,21 @@ document.addEventListener("DOMContentLoaded", function () {
 
   cart.forEach(item => {
     message += `• ${item.name} × ${item.quantity} = ₹${item.price * item.quantity}\n`;
+
   });
 
   message += `\n Total: ₹${totalEl.textContent}`;
 
   const whatsappURL =
-    `https://wa.me/0000000000?text=${encodeURIComponent(message)}`;
-  window.open(whatsappURL, "_blank");
-};
+    `https://wa.me/000000000?text=${encodeURIComponent(message)}`;
 
+  const confirmClear = confirm("Did you send the order on WhatsApp?");
+
+  if (confirmClear) {
+    window.open(whatsappURL, "_blank");
+
+  }
+
+};
+loadCart();
 });
